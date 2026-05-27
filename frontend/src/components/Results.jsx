@@ -40,7 +40,7 @@ export function Results() {
     ];
 
     return (
-        <div id="results-screen" className="container">
+        <div id="results-screen">
 
             {/* Fondo */}
             <div className="general-background">

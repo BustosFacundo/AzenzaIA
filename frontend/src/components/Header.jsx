@@ -1,44 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
+const NAV_LINKS = [
+    { to: "/inicio", label: "Inicio" },
+    { to: "/analisis", label: "Análisis" },
+];
+
 export function Header() {
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => setScrolled(window.scrollY > 20);
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
-        <nav id="menu" className="navbar navbar-expand-lg">
-            <div className="container-fluid">
-                <NavLink id="marca" className="navbar-brand" to="/inicio">
-                    <img src="/logo_azenza.png" alt="Logo" width="40" height="40" />
-                    <img src="/titulo.png" alt="Nombre marca" height="22" />
+        <header className={`az-header ${scrolled ? 'az-header--scrolled' : ''}`}>
+            <div className="az-header__inner">
+
+                {/* Brand */}
+                <NavLink className="az-header__brand" to="/inicio">
+                    <img src="/logo_azenza.png" alt="Logo" height="38" />
+                    <img src="/nombre.png" alt="Azenza" height="34" />
                 </NavLink>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <NavLink className="items-navegacion nav-link" to="/inicio">
-                                Inicio
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="items-navegacion nav-link" to="/analisis">
-                                Análisis
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="items-navegacion nav-link" to="/loading">
-                                Loading
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="items-navegacion nav-link" to="/error">
-                                Error
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="items-navegacion nav-link" to="/results">
-                                Results
-                            </NavLink>
-                        </li>
-                    </ul>
-                </div>
+
+                {/* Divisor vertical */}
+                <div className="az-header__divider" />
+
+                {/* Nav */}
+                <nav className="az-header__nav">
+                    {NAV_LINKS.map(({ to, label }) => (
+                        <NavLink
+                            key={to}
+                            to={to}
+                            className={({ isActive }) =>
+                                `az-header__link ${isActive ? 'az-header__link--active' : ''}`
+                            }
+                        >
+                            {label}
+                        </NavLink>
+                    ))}
+                </nav>
+
             </div>
-        </nav>
+        </header>
     );
 }

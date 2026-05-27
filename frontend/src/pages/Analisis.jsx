@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { DropZone } from  '../components/DropZone';
 import { useNavigate } from "react-router-dom";
 
@@ -60,18 +60,35 @@ export function Analisis() {
         }
     };
 
-    
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            },
+            { threshold: 0.15 }
+        );
+
+        const elements = document.querySelectorAll('.reveal');
+        elements.forEach((el) => observer.observe(el));
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <div id="analisis-container">
             <div id="titulo-analisis">
-                <h1 className='text-gradient'>Azenza IA</h1>
-                <p id='subtitulo-analisis'>Auditoría de marca inteligente. Comparamos tu estrategia interna con lo que realmente proyecta tu perfil</p>
+                <h1 className='text-gradient reveal'>Azenza IA</h1>
+                <p id='subtitulo-analisis' className="reveal">Auditoría de marca inteligente. Comparamos tu estrategia interna con lo que realmente proyecta tu perfil</p>
             </div>
 
             <div id='area-formulario'>
                 <div 
                     id='form-estrategia'
-                    className="glass-panel p-4 rounded-3 shadow-sm"
+                    className="glass-panel p-4 rounded-3 shadow-sm reveal"
                 >
                     <h2 className="h5 text-white mb-3">
                         <i className="fas fa-bullseye text-purple me-2"></i>Tu estrategia
@@ -80,7 +97,7 @@ export function Analisis() {
                         Define tu marca para que la IA contraste tu intención con la realidad
                     </p>
 
-                    <form action="" className='mb-3'>
+                    <form id="campos-form" action="" className='mb-3'>
                         <label
                             htmlFor="campo-problema"
                             className='form-label text-white small'
@@ -130,7 +147,7 @@ export function Analisis() {
 
                 <div 
                     id='drag-and-drop'
-                    className='glass-panel p-4 rounded-3 shadow-sm'
+                    className='glass-panel p-4 rounded-3 shadow-sm reveal'
                 >
                     <h2 className='h5 text-white mb-3'>
                         <i className='fas fa-image text-purple me-2'></i>Tu perfil
@@ -139,7 +156,7 @@ export function Analisis() {
                 </div>
             </div>
 
-            <button id='btn-enviar-diagnostico' onClick={handleSubmit}>
+            <button id='btn-enviar-diagnostico' onClick={handleSubmit} className="reveal">
                 Ejecutar diagnóstico <i className='fas fa-bolt group-hover:animate-pulse'></i>
             </button>
         </div>
