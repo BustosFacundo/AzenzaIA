@@ -52,6 +52,7 @@ body {
 
 .text-gradient {
     background: linear-gradient(to right, var(--color-teal-light), var(--color-teal));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
