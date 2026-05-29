@@ -24,6 +24,11 @@ export const analyzeController = async (req, res) => {
         res.json(result);
 
     } catch (error) {
+        // Error de limite diario
+        if (error.status === 429) {
+            return res.status(429).json({ error: error.message });
+        }
+
         res.status(500).json({ error: error.message });
     }
 };

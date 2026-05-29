@@ -28,6 +28,11 @@ export function Analisis() {
             return;
         }
 
+        if (problem.length > 150 || diff.length > 150 || target.length > 150) {
+            alert("Los campos de texto no pueden superar los 150 caracteres.");
+            return;
+        }
+
         // Armar FormData
         const formData = new FormData();
         formData.append('problem', problem);
@@ -41,6 +46,7 @@ export function Analisis() {
         try {
             const response = await fetch('http://localhost:3000/api/analyze', {
                 method: 'POST',
+                credentials: "include",
                 body: formData,
             });
 
@@ -93,9 +99,6 @@ export function Analisis() {
                     <h2 className="h5 text-white mb-3">
                         <i className="fas fa-bullseye text-purple me-2"></i>Tu estrategia
                     </h2>
-                    <p className='small mb-4'>
-                        Define tu marca para que la IA contraste tu intención con la realidad
-                    </p>
 
                     <form id="campos-form" action="" className='mb-3'>
                         <label
@@ -109,10 +112,14 @@ export function Analisis() {
                             rows='2'
                             className='form-control tech-input'
                             placeholder="Ej: Ayudo a pymes a automatizar sus ventas…"
+                            maxLength={150}
                             value={problem}
                             onChange={(e) => setProblem(e.target.value)}
                         />
-                        
+                        <small className={problem.length >= 150 ? 'warning' : "contador-campo"}>
+                            {problem.length}/150 caracteres
+                        </small>
+
                         <label
                             htmlFor="campo-diferenciacion"
                             className='form-label text-white small'
@@ -124,9 +131,13 @@ export function Analisis() {
                             rows='2'
                             className='form-control tech-input'
                             placeholder="Ej: Usamos IA personalizada, no plantillas genéricas…"
+                            maxLength={150}
                             value={diff}
                             onChange={(e) => setDiff(e.target.value)}
                         />
+                        <small className={diff.length >= 150 ? 'warning' : "contador-campo"}>
+                            {diff.length}/150 caracteres
+                        </small>
 
                         <label
                             htmlFor="campo-publico"
@@ -139,9 +150,13 @@ export function Analisis() {
                             rows='2'
                             className='form-control tech-input'
                             placeholder="Ej: Dueños de restaurantes de lujo…"
+                            maxLength={150}
                             value={target}
                             onChange={(e) => setTarget(e.target.value)}
                         />
+                        <small className={target.length >= 150 ? 'warning' : "contador-campo"}>
+                            {target.length}/150 caracteres
+                        </small>
                     </form>
                 </div>
 

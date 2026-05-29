@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const NAV_LINKS = [
     { to: "/inicio", label: "Inicio" },
-    { to: "/analisis", label: "Análisis" },
+    { to: "/analisis", label: "Análisis" }
 ];
 
 export function Header() {
