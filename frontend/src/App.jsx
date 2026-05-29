@@ -4,9 +4,9 @@ import { Header } from './components/Header'
 import { Inicio } from './pages/Inicio'
 import { Analisis } from './pages/Analisis'
 import { Footer } from './components/Footer'
-import { Loading } from './components/Loading'
-import { Error } from './components/Error'
-import { Results } from './components/Results'
+import { Loading } from './pages/Loading'
+import { Error } from './pages/Error'
+import { Results } from './pages/Results'
 
 function App() {
 
