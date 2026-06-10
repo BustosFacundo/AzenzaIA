@@ -9,6 +9,7 @@ export function Analisis() {
     const [target, setTarget] = useState('');
     const [image, setImage] = useState(null); // Para el preview
     const [imageFile, setImageFile] = useState(null); // Para el FormData
+    const API_URL = import.meta.env.BACKEND_URL
 
     const navigate = useNavigate();
 
@@ -44,7 +45,7 @@ export function Analisis() {
         navigate('/loading');
 
         try {
-            const response = await fetch('http://localhost:3000/api/analyze', {
+            const response = await fetch(`${API_URL}/api/analyze`, {
                 method: 'POST',
                 credentials: "include",
                 body: formData,
