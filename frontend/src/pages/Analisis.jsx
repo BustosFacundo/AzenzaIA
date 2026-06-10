@@ -53,6 +53,7 @@ export function Analisis() {
 
             if (!response.ok) {
                 const err = await response.json();
+                console.log("Gemini error:", JSON.stringify(error, null, 2));
                 throw new Error(err.error || 'Error del servidor');
             }
 
