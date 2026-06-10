@@ -9,7 +9,7 @@ export function Analisis() {
     const [target, setTarget] = useState('');
     const [image, setImage] = useState(null); // Para el preview
     const [imageFile, setImageFile] = useState(null); // Para el FormData
-    const API_URL = import.meta.env.BACKEND_URL
+    const API_URL = import.meta.env.VITE_BACKEND_URL
 
     const navigate = useNavigate();
 
