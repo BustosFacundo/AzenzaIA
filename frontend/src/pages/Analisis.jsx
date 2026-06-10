@@ -52,9 +52,9 @@ export function Analisis() {
             });
 
             if (!response.ok) {
-                const err = await response.json();
-                console.log("Gemini error:", JSON.stringify(error, null, 2));
-                throw new Error(err.error || 'Error del servidor');
+                const responseText = await response.text();
+                console.log("Gemini raw response:", responseText);
+                throw new Error("Gemini error");
             }
 
             const data = await response.json();
