@@ -15,7 +15,7 @@ export const analyzeController = async (req, res) => {
 
         const base64Image = toBase64(req.file);
 
-        const result = await callOpenAI(base64Image, {
+        const result = await callGPT(base64Image, {
             problem,
             diff,
             target

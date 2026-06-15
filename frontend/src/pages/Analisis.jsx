@@ -53,8 +53,8 @@ export function Analisis() {
 
             if (!response.ok) {
                 const responseText = await response.text();
-                console.log("Gemini raw response:", responseText);
-                throw new Error("Gemini error");
+                console.log("Openai raw response:", responseText);
+                throw new Error("Error en la respuesta");
             }
 
             const data = await response.json();
