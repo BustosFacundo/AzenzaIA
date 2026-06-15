@@ -1,5 +1,5 @@
 import { toBase64 } from "../utils/image.utils.js";
-import { callOpenAI } from "../services/openai.service.js";
+import { callGPT } from "../services/openai.service.js";
 
 export const analyzeController = async (req, res) => {
     try {
