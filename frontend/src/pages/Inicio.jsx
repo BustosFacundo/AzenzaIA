@@ -276,8 +276,8 @@ export function Inicio() {
                         Estrategia. Estructura. Escala.
                     </h2>
                     <p className="cta__desc">
-                        Empezá con un diagnóstico de tu modelo de negocio y descubrí
-                        qué está limitando tu crecimiento.
+                        Empezá con un diagnóstico de tu comunicación en redes y descubrí
+                        cómo alinearla con tu público objetivo.
                     </p>
                     <button className="btn-primary btn-primary--lg" onClick={() => navigate("/analisis")}>
                         Comenzar diagnóstico gratuito
