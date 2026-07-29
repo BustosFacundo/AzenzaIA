@@ -15,7 +15,7 @@ export function Footer() {
 
                     {/* Marca */}
                     <div>
-                        <img src="../public/titulo.png" alt="Azenza" className="az-footer__logo" />
+                        <img src="/titulo.png" alt="Azenza" className="az-footer__logo" />
                         <p className="az-footer__tagline">
                             Menos improvisación. Más sistema.
                         </p>

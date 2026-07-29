@@ -205,8 +205,8 @@ export function Inicio() {
                     <div className="approach__right reveal">
                         <div className="pillars">
                             {[
-                                { num: '01', label: 'Estructura', desc: 'Ordenamos la operación desde su base.' },
-                                { num: '02', label: 'Estrategia', desc: 'Definimos dirección con lógica y criterio.' },
+                                { num: '01', label: 'Estrategia', desc: 'Ordenamos la operación desde su base.' },
+                                { num: '02', label: 'Estructura', desc: 'Definimos dirección con lógica y criterio.' },
                                 { num: '03', label: 'Escala', desc: 'Diseñamos sistemas que sostienen el crecimiento.' },
                             ].map(({ num, label, desc }) => (
                                 <div className="pillar glass-panel" key={num}>
@@ -273,7 +273,7 @@ export function Inicio() {
                 <div className="cta__inner reveal">
                     <p className="section-label">Siguiente paso</p>
                     <h2 className="cta__title">
-                        Estructura. Estrategia. Escala.
+                        Estrategia. Estructura. Escala.
                     </h2>
                     <p className="cta__desc">
                         Empezá con un diagnóstico de tu modelo de negocio y descubrí
