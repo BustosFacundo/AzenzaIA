@@ -246,6 +246,21 @@ export function Inicio() {
                                 ))}
                             </ul>
                         </div>
+                        <div className="audience-card audience-card--no glass-panel reveal">
+                            <div className="audience-card__tag audience-card__tag--no">No es para vos (aún)</div>
+                            <ul>
+                                {[
+                                    'Estás buscando tu primera venta',
+                                    'No tenés un producto o servicio validado',
+                                    'Querés solo acciones de marketing aisladas',
+                                    'Dirigís una gran corporación establecida',
+                                ].map((item) => (
+                                    <li key={item}>
+                                        <span className="dot dot--dim" /> {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
