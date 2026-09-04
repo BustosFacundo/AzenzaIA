@@ -121,12 +121,6 @@ export function Inicio() {
                         <span className="text-gradient">Más sistema.</span>
                     </h1>
 
-                    <p className="hero__subtitle reveal">
-                        Transformamos estructuras desorganizadas en negocios sólidos,
-                        eficientes y escalables. Estrategia, sistemas y automatización
-                        en un solo enfoque.
-                    </p>
-
                     <div className="hero__actions reveal">
                         <button className="btn-primary" onClick={() => navigate("/analisis")}>
                             Comenzar diagnóstico
@@ -146,43 +140,12 @@ export function Inicio() {
                     </div>
                 </div>
 
-                <div className="hero__visual reveal">
-                    <div className="system-card glass-panel">
-                        <div className="system-card__header">
-                            <span className="system-card__badge">Sistema activo</span>
-                            <div className="system-card__dots">
-                                <span /><span /><span />
-                            </div>
-                        </div>
-                        <div className="system-card__body">
-                            {[
-                                { label: 'Modelo de negocio', pct: 92 },
-                                { label: 'Estrategia comercial', pct: 78 },
-                                { label: 'Operaciones', pct: 85 },
-                                { label: 'Escalabilidad', pct: 67 },
-                            ].map(({ label, pct }) => (
-                                <div className="sys-row" key={label}>
-                                    <div className="sys-row__info">
-                                        <span>{label}</span>
-                                        <span className="sys-row__pct">{pct}%</span>
-                                    </div>
-                                    <div className="sys-row__bar">
-                                        <div
-                                            className="sys-row__fill"
-                                            style={{ '--target': `${pct}%` }}
-                                        />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                        <div className="system-card__footer">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                <circle cx="7" cy="7" r="6" stroke="#4db8b8" strokeWidth="1.4"/>
-                                <path d="M4.5 7l2 2 3-3" stroke="#4db8b8" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                            Estructura optimizada
-                        </div>
-                    </div>
+                <div className="hero__side reveal">
+                    <span className="hero__divider" />
+                    <p className="hero__side-text">
+                        <strong>Profesionaliza</strong> tu negocio y <strong>compite</strong> por
+                        el liderazgo de tu nicho.
+                    </p>
                 </div>
             </section>
 
