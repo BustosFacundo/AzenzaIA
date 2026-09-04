@@ -304,45 +304,25 @@ export function Inicio() {
                 </div>
             </section>
 
-            {/* ── PARA QUIEN ── */}
-            <section className="audience">
-                <div className="audience__inner">
-                    <p className="section-label reveal">¿Para quién es Azenza?</p>
-                    <h2 className="section-title reveal">
-                        Para negocios que ya validaron,<br />pero aún no escalaron.
-                    </h2>
-                    <div className="audience__grid">
-                        <div className="audience-card audience-card--yes glass-panel reveal">
-                            <div className="audience-card__tag audience-card__tag--yes">Sí es para vos</div>
-                            <ul>
-                                {[
-                                    'Tenés ventas pero no un sistema definido',
-                                    'Sentís que trabajás más de lo que creces',
-                                    'Querés escalar con lógica y previsibilidad',
-                                    'Buscás reemplazar la improvisación por estructura',
-                                    'Tu negocio tiene entre 1 y 5 años de validación comercial',
-                                ].map((item) => (
-                                    <li key={item}>
-                                        <span className="dot dot--teal" /> {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div className="audience-card audience-card--no glass-panel reveal">
-                            <div className="audience-card__tag audience-card__tag--no">No es para vos (aún)</div>
-                            <ul>
-                                {[
-                                    'Estás buscando tu primera venta',
-                                    'No tenés un producto o servicio validado',
-                                    'Querés solo acciones de marketing aisladas',
-                                    'Dirigís una gran corporación establecida',
-                                ].map((item) => (
-                                    <li key={item}>
-                                        <span className="dot dot--dim" /> {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+            {/* ── POR QUÉ AZENZA IA ── */}
+            <section className="why-ai">
+                <div className="why-ai__inner">
+                    <div className="why-ai__visual reveal">
+                        <img
+                            src="/ecosistema.jpeg"
+                            alt="Ecosistema de negocios: identidad, comunicación, finanzas, crecimiento y procesos"
+                            className="why-ai__img"
+                        />
+                    </div>
+                    <div className="why-ai__content glass-panel reveal">
+                        <p className="section-label">Nuestra motivacion</p>
+                        <h2 className="section-title">¿Para qué creamos Azenza IA?</h2>
+                        <p className="why-ai__desc">
+                            Para transformar respuestas genéricas en decisiones estratégicas. Azenza
+                            IA busca guíar al emprendedor a través de un formulario estructurado para
+                            brindar el contexto correcto y obtener análisis realmente útiles para
+                            su negocio.
+                        </p>
                     </div>
                 </div>
             </section>
