@@ -10,11 +10,16 @@
   "author": "FacundoBustos",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^6.19.3",
+    "bcryptjs": "^3.0.3",
+    "connect-pg-simple": "^10.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
     "dotenv": "^17.4.1",
     "express": "^5.2.1",
+    "express-session": "^1.19.0",
     "multer": "^2.1.1",
-    "openai": "^6.42.0"
+    "openai": "^6.42.0",
+    "prisma": "^6.19.3"
   }
 }
