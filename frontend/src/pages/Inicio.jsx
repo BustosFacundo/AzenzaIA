@@ -161,7 +161,7 @@ export function Inicio() {
                         pueda crecer de forma sostenible.
                     </p>
 
-                    <div className="profesionalizar__steps">
+                    <div className="profesionalizar__steps reveal">
                         {[
                             {
                                 icon: <IconIdentidad />,
@@ -200,7 +200,7 @@ export function Inicio() {
                                 desc: 'medir resultados para saber qué funciona, qué no y dónde mejorar.',
                             },
                         ].map(({ icon, num, title, desc }) => (
-                            <div className="pro-step glass-panel reveal" key={num}>
+                            <div className="pro-step glass-panel" key={num}>
                                 <div className="pro-step__icon">{icon}</div>
                                 <span className="pro-step__number">{num}</span>
                                 <div className="pro-step__text">
