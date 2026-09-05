@@ -1,0 +1,42 @@
+// Esquema de base de datos de Azenza
+// Documentación: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id           String   @id @default(uuid())
+    nombre       String   @db.VarChar(80)
+    email        String   @unique @db.VarChar(160)
+    passwordHash String   @map("password_hash")
+    negocio      String?  @db.VarChar(120)
+    createdAt    DateTime @default(now()) @map("created_at")
+    updatedAt    DateTime @updatedAt @map("updated_at")
+
+    @@map("users")
+}
+
+// A futuro, para guardar el historial de análisis de cada usuario,
+// alcanza con agregar un modelo relacionado por userId. Por ejemplo:
+//
+// model Analysis {
+//     id        String   @id @default(uuid())
+//     userId    String   @map("user_id")
+//     user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+//     problem   String
+//     diff      String
+//     target    String
+//     result    Json
+//     createdAt DateTime @default(now()) @map("created_at")
+//
+//     @@index([userId])
+//     @@map("analyses")
+// }
+//
+// (y en User agregar: analyses Analysis[])

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { UserMenu } from "./UserMenu";
 
 const NAV_LINKS = [
     { to: "/inicio", label: "Inicio" },
@@ -42,6 +43,9 @@ export function Header() {
                         </NavLink>
                     ))}
                 </nav>
+
+                {/* Menú de usuario */}
+                <UserMenu />
 
             </div>
         </header>

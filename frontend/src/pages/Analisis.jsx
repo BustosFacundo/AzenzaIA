@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useRef, useEffect } from "react";
 import { DropZone } from  '../components/DropZone';
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export function Analisis() {
     const [problem, setProblem] = useState('');
@@ -12,6 +13,7 @@ export function Analisis() {
     const API_URL = import.meta.env.VITE_BACKEND_URL
 
     const navigate = useNavigate();
+    const { user, limpiarSesion } = useAuth();
 
     const handleImageChange = (dataUrl, file) => {
         setImage(dataUrl);
@@ -52,9 +54,16 @@ export function Analisis() {
             });
 
             if (!response.ok) {
-                const responseText = await response.text();
-                console.log("Openai raw response:", responseText);
-                throw new Error("Error en la respuesta");
+                const data = await response.json().catch(() => ({}));
+
+                // La sesión venció mientras usaba la página: lo mandamos al login
+                if (response.status === 401) {
+                    limpiarSesion();
+                    navigate('/login', { replace: true, state: { from: '/analisis' } });
+                    return;
+                }
+
+                throw new Error(data.error || "No se pudo completar el análisis. Intentá de nuevo.");
             }
 
             const data = await response.json();
@@ -91,10 +100,15 @@ export function Analisis() {
             <div id="titulo-analisis">
                 <h1 className='text-gradient reveal'>Azenza IA</h1>
                 <p id='subtitulo-analisis' className="reveal">Auditoría de marca inteligente. Comparamos tu estrategia interna con lo que realmente proyecta tu perfil</p>
+                {user && (
+                    <p className="analisis-saludo reveal">
+                        Hola, <strong>{user.nombre.split(' ')[0]}</strong> — tenés 3 análisis por día.
+                    </p>
+                )}
             </div>
 
             <div id='area-formulario'>
-                <div 
+                <div
                     id='form-estrategia'
                     className="glass-panel p-4 rounded-3 shadow-sm reveal"
                 >
@@ -162,7 +176,7 @@ export function Analisis() {
                     </form>
                 </div>
 
-                <div 
+                <div
                     id='drag-and-drop'
                     className='glass-panel p-4 rounded-3 shadow-sm reveal'
                 >

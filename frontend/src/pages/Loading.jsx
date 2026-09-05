@@ -1,6 +1,9 @@
 import React from "react";
 
-export function Loading() {
+export function Loading({
+    titulo = "Procesando Datos...",
+    subtitulo = "Cruzando estrategia con evidencia visual",
+}) {
 
     return (
         <div id="loading-screen" className="screen d-flex justify-content-center align-items-center">
@@ -23,11 +26,11 @@ export function Loading() {
                 </div>
 
                 <h3 className="mt-4 fw-bold loading-pulse">
-                    Procesando Datos...
+                    {titulo}
                 </h3>
 
                 <p className="text-secondary mt-2">
-                    Cruzando estrategia con evidencia visual
+                    {subtitulo}
                 </p>
 
             </div>
