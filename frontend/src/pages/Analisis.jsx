@@ -4,6 +4,10 @@ import { DropZone } from  '../components/DropZone';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
+// Desactivado junto con el límite diario en el backend (ver rateLimit.middleware.js).
+// Volver a poner en true cuando se reactive el límite.
+const MOSTRAR_LIMITE_DIARIO = false;
+
 export function Analisis() {
     const [problem, setProblem] = useState('');
     const [diff, setDiff] = useState('');
@@ -100,7 +104,7 @@ export function Analisis() {
             <div id="titulo-analisis">
                 <h1 className='text-gradient reveal'>Azenza IA</h1>
                 <p id='subtitulo-analisis' className="reveal">Auditoría de marca inteligente. Comparamos tu estrategia interna con lo que realmente proyecta tu perfil</p>
-                {user && (
+                {user && MOSTRAR_LIMITE_DIARIO && (
                     <p className="analisis-saludo reveal">
                         Hola, <strong>{user.nombre.split(' ')[0]}</strong> — tenés 3 análisis por día.
                     </p>
