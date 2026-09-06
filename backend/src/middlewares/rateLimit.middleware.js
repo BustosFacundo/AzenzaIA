@@ -4,6 +4,10 @@ import { randomUUID } from "crypto";
 const usageStore = new Map();
 const authStore = new Map();
 
+// Desactivado a pedido: por ahora no hay límite diario de análisis.
+// Para reactivarlo, volver a poner esto en true.
+const DAILY_LIMIT_ACTIVO = false;
+
 const DAILY_LIMIT = 3;
 const COOKIE_NAME = "uid";
 const COOKIE_MAX_AGE = 365 * 24 * 60 * 60 * 1000; // 1 año en ms
@@ -47,6 +51,8 @@ function getOrCreateKey(req, res) {
  * en alguna ruta pública.
  */
 export const rateLimitMiddleware = (req, res, next) => {
+    if (!DAILY_LIMIT_ACTIVO) return next();
+
     const key = req.user?.id ? `user__${req.user.id}` : getOrCreateKey(req, res).key;
     const now = Date.now();
 
