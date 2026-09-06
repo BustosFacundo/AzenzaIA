@@ -99,6 +99,47 @@ body {
     opacity: 0.85;
 }
 
+/* Hamburguesa: solo existe visualmente en mobile */
+.az-header__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.az-header__burger span {
+    width: 22px;
+    height: 2px;
+    border-radius: 999px;
+    background: #ffffff;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.az-header__burger--abierto span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.az-header__burger--abierto span:nth-child(2) {
+    opacity: 0;
+}
+
+.az-header__burger--abierto span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Menú desplegable de la hamburguesa (mobile) */
+.az-header__mobile-nav {
+    display: none;
+}
+
 .az-header__divider {
     width: 1px;
     height: 30px;
@@ -145,10 +186,22 @@ body {
     .az-header {
         padding: 0 16px;
         height: 64px;
+        position: relative;
     }
 
-    .az-header__divider {
-        margin: 0 12px;
+    .az-header__inner {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+    }
+
+    .az-header__burger {
+        display: flex;
+        grid-column: 1;
+    }
+
+    .az-header__brand {
+        grid-column: 2;
+        justify-self: center;
     }
 
     .az-header__brand img:first-child {
@@ -159,9 +212,52 @@ body {
         height: 26px;
     }
 
-    .az-header__link {
-        padding: 6px 10px;
-        font-size: 0.9rem;
+    /* En mobile la navegación pasa a la hamburguesa */
+    .az-header__divider,
+    .az-header__nav {
+        display: none;
+    }
+
+    .az-user {
+        grid-column: 3;
+        justify-self: end;
+        margin-left: 0;
+    }
+
+    .az-header__mobile-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 150;
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+        gap: 4px;
+        background: linear-gradient(160deg, rgba(0, 51, 51, 0.98) 0%, rgba(8, 16, 15, 0.98) 100%);
+        border-bottom: 1px solid var(--teal-border-hover);
+        box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
+        animation: az-user-menu-in 0.18s ease;
+    }
+
+    .az-header__mobile-link {
+        padding: 12px 14px;
+        border-radius: var(--radius-sm);
+        color: rgba(255, 255, 255, 0.85);
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        text-decoration: none;
+        transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .az-header__mobile-link:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: #ffffff;
+    }
+
+    .az-header__mobile-link--active {
+        background: var(--teal-bg-active);
+        color: #ffffff;
     }
 }
 
